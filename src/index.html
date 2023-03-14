@@ -1,0 +1,100 @@
+<div id="loadingPage">Loading...</div>
+
+<div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+	<div class="wheel"></div>
+	<div class="hamster">
+		<div class="hamster__body">
+			<div class="hamster__head">
+				<div class="hamster__ear"></div>
+				<div class="hamster__eye"></div>
+				<div class="hamster__nose"></div>
+			</div>
+			<div class="hamster__limb hamster__limb--fr"></div>
+			<div class="hamster__limb hamster__limb--fl"></div>
+			<div class="hamster__limb hamster__limb--br"></div>
+			<div class="hamster__limb hamster__limb--bl"></div>
+			<div class="hamster__tail"></div>
+		</div>
+	</div>
+	<div class="spoke"></div>
+</div>
+
+<canvas id="oldSkool"></canvas>
+
+<script>
+  const db = document.body;
+  const c = document.getElementById("oldSkool");
+  const $ = c.getContext("2d");
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+  
+  const resumeText = `Name: Timilehin Odegbami 
+Email: Odegbamirichard@gmail.com 
+Contact Number: (973)-517-6418
+Objective: To gain a position as a Junior DevOps Engineer at a vibrant firm where I can use my technical talents and enthusiasm for technology to contribute to the organization's success.
+Education:
+•	Associate in Computer Information and Systems, Central Penn College, 2024 (Expected)
+•	Relevant coursework: Cloud Computing, Operating Systems, Database Management, Networking Fundamentals.
+Skills: 
+•	Hands-on experience with cloud platforms (AWS)
+•	Knowledge of containerization using Docker and Kubernetes
+•	Experience in scripting languages (Python, Bash)
+•	Familiarity with Agile methodologies and CI/CD pipelines
+•	Understanding of C++ and Java
+•	Good communication and collaboration skills
+Projects:
+•	Automated Deployment of a Multi-tier Application: Deployed a multi-tier web application on AWS using EC2, RDS, and S3, and automated the deployment process using Terraform and Ansible.
+•	Containerized a Flask Application: Created a Docker image of a Flask application and deployed it on a Kubernetes cluster. Implemented continuous integration and delivery pipeline using Jenkins.
+Certifications:
+•	AWS Certified Solutions Architect - Associate
+References: Available upon request.
+`;
+  const resumeLines = resumeText.split("\n");
+  let lineIndex = 0;
+  let charIndex = 0;
+  
+  function drawResume() {
+    $.globalCompositeOperation = "source-over";
+    $.shadowBlur = 0;
+    $.fillStyle = "hsla(0,0%,0%,0.4)";
+    $.fillRect(0, 0, c.width, c.height);
+    
+    $.shadowColor = "hsla(120,100%,50%,0.5)";
+    $.shadowBlur = 9;
+    $.fillStyle = "hsla(120,100%,20%,1)";
+    $.globalCompositeOperation = "lighter";
+    $.font = "1.1em monospace";
+    $.textBaseline = "top";
+    
+    const x = 100;
+    let y = 100;
+    
+    for (let i = 0; i < lineIndex; i++) {
+      const line = resumeLines[i];
+      $.fillText(line, x, y);
+      y += 16;
+    }
+    
+    const currentLine = resumeLines[lineIndex];
+    const currentText = currentLine.substring(0, charIndex);
+    $.fillText(currentText, x, y);
+    
+    const charWidth = $.measureText(currentText).width;
+    $.fillStyle = "hsla(120,100%,50%,1)";
+    $.fillRect(x + charWidth, y + 2, 10, 14);
+    
+    if (charIndex < currentLine.length) {
+      charIndex++;
+    } else if (lineIndex < resumeLines.length - 1) {
+      lineIndex++;
+      charIndex = 0;
+    }
+  }
+  
+  function relay() {
+    window.requestAnimationFrame(relay);
+    drawResume();
+  }
+  
+  relay();
+</script>
