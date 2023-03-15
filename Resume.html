@@ -35,16 +35,20 @@ This code sets up a canvas on a web page and displays a resume on it. Here is a 
 
 HTML:
 
-The <body> tag contains a <canvas> tag with the id 'oldSkool'.
-JavaScript:
-
-The variables db and c are assigned the values of document.body and document.getElementById('oldSkool'), respectively. This is done so that the code can reference these elements later on.
-The width and height of the canvas element are set to the width and height of the window object.
-A function called relay is defined. It uses window.requestAnimationFrame() to call the resume function repeatedly to create an animation.
-The resumeContent variable is an array that contains the resume information to be displayed on the canvas.
-The resume function is defined. It sets up the canvas and then displays the resume information using $.fillText().
-Finally, the canvas and its styles are set up. The width and height of the canvas are set to the width and height of the window object. The body margin is set to 0, and the background color is set to black. The overflow property is set to hidden so that anything beyond the canvas is not shown. The textBaseline is set to top, which means that text will be aligned with the top of the text box. The font is set to 1.1em monospace.
-The relay function is called to start the animation.
+• <body>: This is the opening tag for the main content of the HTML document.
+• <canvas id='oldSkool'></canvas>: This is an HTML5 canvas element with an ID of "oldSkool".
+• <script>: This opening tag indicates that a JavaScript code block is about to begin.
+• var db = document.body;: This line creates a variable "db" that stores a reference to the HTML body element.
+• var c = document.getElementById('oldSkool');: This line creates a variable "c" that stores a reference to the canvas element with the ID "oldSkool".
+• var $ = c.getContext('2d');: This line creates a variable "$" that stores the 2D context of the canvas.
+• c.width = window.innerWidth;: This line sets the width of the canvas to the width of the window.
+• c.height = window.innerHeight;: This line sets the height of the canvas to the height of the window.
+• var resume;: This line creates an empty variable called "resume".
+• function relay() { ... }: This is a function definition for "relay", which uses window.requestAnimationFrame() to repeatedly call another function "resume".
+• var resumeContent = [...]: This line defines an array "resumeContent" that contains information about the resume.
+• resume = function() { ... }: This line sets the value of the "resume" variable to a function that draws the resume on the canvas.
+• The rest of the JavaScript code sets up the canvas and styles, and then calls the "relay" function to start the animation.
+• Overall, this HTML code creates an animated canvas element that displays a stylized version of a resume, with information about a software engineer's experience and education. The canvas is continuously updated using window.requestAnimationFrame() to create an animation effect.
 `;
   const resumeLines = resumeText.split("\n");
   let lineIndex = 0;
