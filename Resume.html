@@ -19,7 +19,7 @@ Skills:
 •	Knowledge of containerization using Docker and Kubernetes
 •	Experience in scripting languages (Python, Bash)
 •	Familiarity with Agile methodologies and CI/CD pipelines
-•	Understanding of C++ and Java
+•	Understanding of C++, Java, HTML, CSS and Javascript
 •	Good communication and collaboration skills
 Projects:
 •	Automated Deployment of a Multi-tier Application: Deployed a multi-tier web application on AWS using EC2, RDS, and S3, and automated the deployment process using Terraform and Ansible.
@@ -27,6 +27,21 @@ Projects:
 Certifications:
 •	AWS Certified Solutions Architect - Associate
 References: Available upon request.
+
+This code sets up a canvas on a web page and displays a resume on it. Here is a breakdown of the code:
+
+HTML:
+
+The <body> tag contains a <canvas> tag with the id 'oldSkool'.
+JavaScript:
+
+The variables db and c are assigned the values of document.body and document.getElementById('oldSkool'), respectively. This is done so that the code can reference these elements later on.
+The width and height of the canvas element are set to the width and height of the window object.
+A function called relay is defined. It uses window.requestAnimationFrame() to call the resume function repeatedly to create an animation.
+The resumeContent variable is an array that contains the resume information to be displayed on the canvas.
+The resume function is defined. It sets up the canvas and then displays the resume information using $.fillText().
+Finally, the canvas and its styles are set up. The width and height of the canvas are set to the width and height of the window object. The body margin is set to 0, and the background color is set to black. The overflow property is set to hidden so that anything beyond the canvas is not shown. The textBaseline is set to top, which means that text will be aligned with the top of the text box. The font is set to 1.1em monospace.
+The relay function is called to start the animation.
 `;
   const resumeLines = resumeText.split("\n");
   let lineIndex = 0;
